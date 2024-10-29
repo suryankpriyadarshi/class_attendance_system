@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Attendance Sheet</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static',filename='css/table.css') }}"
+      type="text/css"
+    />
+  </head>
+  <body>
+    <section class="main">
+      <h2>ATTENDENCE SHEET</h2>
+      <table>
+        <thead>
+          <th>SL NO.</th>
+          <th>NAME</th>
+          <th>ROLL NUMBER</th>
+          <th>ATTENDENCE</th>
+        </thead>
+        {% for student in student_list %}
+        <tr>
+          <td>{{student.sl_no}}</td>
+          <td>{{student.name}}</td>
+          <td>{{student.rollno}}</td>
+          {% if student.attendence == 'A' %}
+          <td>&#10060;</td>
+          {% endif %} {% if student.attendence == 'P' %}
+          <td>&#x2705;</td>
+          {% endif %}
+        </tr>
+        {% endfor %}
+      </table>
+      <div class="btn-container">
+        <button id="home-btn btn-primary" type="button" onclick="goToHome()">
+          Return to Home
+        </button>
+      </div>
+    </section>
+    <script>
+      function goToHome() {
+        window.location.href = "{{ url_for('home') }}";
+      }
+    </script>
+  </body>
+</html>

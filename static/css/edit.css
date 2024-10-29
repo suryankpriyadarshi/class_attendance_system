@@ -1,0 +1,97 @@
+@import url("https://fonts.googleapis.com");
+@import url("https://fonts.gstatic.com");
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+
+body {
+  height: 100svh;
+  background: linear-gradient(to right, #20a6c7, #b3d3cc);
+}
+.main {
+  position: absolute;
+  top: 15%;
+  left: 10%;
+  width: 80%;
+  background: rgb(242, 252, 253);
+  border-radius: 50px;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.6);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: "Roboto", sans-serif;
+  font-style: normal;
+}
+.main h2 {
+  color: #00252e;
+  margin: 1rem;
+  font-size: 3rem;
+  font-weight: 400;
+  text-decoration: underline;
+}
+.main table {
+  table-layout: fixed;
+  margin: 1.5rem auto;
+  width: 90%;
+  border: 2px solid black;
+  border-collapse: collapse;
+}
+.main table th {
+  margin: none;
+  border: 2px solid black;
+  padding: 1rem 0.5rem;
+  text-align: center;
+  background-color: rgb(255, 255, 255);
+}
+.main table tr:nth-of-type(odd) {
+  background-color: rgb(234, 234, 234);
+}
+.main table tr:nth-of-type(even) {
+  background-color: rgb(255, 255, 255);
+}
+.main table td {
+  margin: none;
+  border: 2px solid black;
+  padding: 1rem 0;
+  text-align: center;
+}
+.main table th {
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+.main table th:nth-child(1) {
+  width: 10%;
+}
+.main table th:nth-child(2) {
+  width: 40%;
+}
+.main table th:nth-child(3) {
+  width: 30%;
+}
+.main table th:nth-child(4) {
+  width: 20%;
+}
+.btn-container {
+  margin-bottom: 5px;
+  display: flex;
+  width: 100%;
+  flex-direction: row;
+  gap: 2%;
+  justify-content: center;
+}
+button {
+  height: 10vh;
+  width: 15vw;
+  border-radius: 25px;
+  background-color: #0275d8;
+  font-family: var(--font);
+  font-size: 1.5rem;
+  color: white;
+  border: none;
+  outline: none;
+  transition: 0.1s ease;
+}
+button:hover {
+  background: white;
+  border: 2px solid black;
+  color: black;
+  cursor: pointer;
+}

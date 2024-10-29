@@ -1,0 +1,142 @@
+@import url("https://fonts.googleapis.com");
+@import url("https://fonts.gstatic.com");
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0");
+@import url("https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0");
+@import url("https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0");
+@import url("https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0");
+:root {
+  --font: "Roboto", sans-serif;
+}
+* {
+  margin: 0;
+  padding: 0;
+}
+body {
+  background: linear-gradient(to right, #20a6c7, #b3d3cc);
+  height: 100svh;
+}
+.main {
+  background-color: white;
+  height: 85%;
+  width: 52%;
+  margin-left: 22%;
+  margin-right: 22%;
+  border-radius: 50px;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.6);
+  overflow: hidden;
+}
+img {
+  height: 40vh;
+  width: 40vw;
+  border-radius: 50px;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.btn-container {
+  margin-bottom: 22%;
+  display: flex;
+  width: 70vw;
+  flex-direction: row;
+  gap: 2%;
+  justify-content: center;
+}
+button {
+  height: 10vh;
+  width: 15vw;
+  border-radius: 25px;
+  background-color: #0275d8;
+  font-family: var(--font);
+  font-size: 1.5rem;
+  color: white;
+  border: none;
+  outline: none;
+  transition: 0.1s ease;
+}
+button:hover {
+  background: white;
+  border: 2px solid black;
+  color: black;
+  cursor: pointer;
+}
+.user-btn {
+  position: relative;
+  background: none;
+  top: 2%;
+  left: 95%;
+  border-radius: 50%;
+  height: 50px;
+  width: 50px;
+}
+.user-btn:hover {
+  cursor: pointer;
+  border: none;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.6);
+  opacity: 85%;
+}
+.user {
+  height: 100%;
+  width: 100%;
+}
+.drop-wrap {
+  display: block;
+  margin: 0;
+  position: absolute;
+  z-index: 2;
+  top: 9%;
+  right: 0%;
+  width: 320px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.drop-wrap.show {
+  opacity: 1;
+}
+
+.drop {
+  background: #fff;
+  padding: 20px;
+  margin: 10px;
+  display: flex;
+  gap: 5px;
+  flex-direction: column;
+  border-radius: 10px;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.6);
+}
+.drop a {
+  text-decoration: none;
+  color: black;
+  font-family: var(--font);
+  font-size: 1.2rem;
+}
+.drop a span {
+  position: absolute;
+  left: 80%;
+}
+
+.drop a:hover {
+  background: rgb(229, 226, 226);
+  cursor: pointer;
+}
+
+#video-container {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 90%;
+  width: 90%;
+  margin-top: 5%;
+  margin-bottom: 5%;
+}
+#video {
+  width: 580px;
+}

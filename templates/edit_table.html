@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Attendance Sheet</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static',filename='css/edit.css') }}"
+      type="text/css"
+    />
+  </head>
+  <body>
+    <section class="main">
+      <h2>ATTENDANCE SHEET</h2>
+
+      <!-- Form for saving edited attendance -->
+      <form action="{{ url_for('save_attendance_details', userid=userid) }}" method="POST">
+        <input type="hidden" name="section" value="{{ section }}">
+        <input type="hidden" name="date" value="{{ date }}">
+        <table>
+          <thead>
+            <th>SL NO.</th>
+            <th>NAME</th>
+            <th>ROLL NUMBER</th>
+            <th>ATTENDANCE</th>
+          </thead>
+          <tbody>
+            {% for student in student_list %}
+            <tr>
+              <td>{{student.sl_no}}</td>
+              <td>{{student.name}}</td>
+              <td>{{student.rollno}}</td>
+              <td>
+                <select name="attendance_{{ student.rollno }}">
+                  <option value="P" {% if student.attendence == 'P' %}selected{% endif %}>Present</option>
+                  <option value="A" {% if student.attendence == 'A' %}selected{% endif %}>Absent</option>
+                </select>
+              </td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+        <div class="btn-container">
+          <button id="save-btn" class="btn-primary" type="submit">Save</button>
+          <button id="home-btn" class="btn-primary" type="button" onclick="goToHome()">Return to Home</button>
+        </div>
+      </form>
+    </section>
+    <script>
+      function goToHome() {
+        window.location.href = "{{ url_for('home') }}";
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="{{ url_for('static', filename='css/camera.css') }}"
+      rel="stylesheet"
+    />
+    <title>Take Attendance</title>
+  </head>
+  <body>
+    <button class="user-btn" onclick="dropDown()">
+      <img
+        src="{{ url_for('static', filename='images/user.jpg') }}"
+        alt="Error!"
+        class="user"
+      />
+    </button>
+    <div class="drop-wrap" id="menu">
+      <div class="drop">
+        <a href="/logout"
+          >My Account<span class="material-symbols-outlined"> person </span></a
+        >
+        <a href="#"
+          >Edit Profile<span class="material-symbols-outlined"> edit </span></a
+        >
+        <a href="#"
+          >Settings<span class="material-symbols-outlined icon">
+            settings
+          </span></a
+        >
+        <a href="/logout"
+          >Logout<span class="material-symbols-outlined icon"> logout </span></a
+        >
+      </div>
+    </div>
+    <div class="main">
+      <div class="container">
+        <div id="video-container">
+          <video id="video" autoplay></video>
+          <canvas id="canvas" style="display: none"></canvas>
+        </div>
+        <form
+          name="Attendence"
+          action="/attendance/{{userid}}/take_attendance/{{section}}/start_attendance"
+          method="POST"
+        >
+          <div class="btn-container">
+            <input type="hidden" id="image-data" name="image_data" />
+            <button id="capture-btn" type="button" onclick="capturePhoto()">
+              Click Photo
+            </button>
+            <button type="submit">Start Attendance</button>
+          </div>
+        </form>
+      </div>
+    </div>
+    <script>
+      let video = document.getElementById("video");
+      let canvas = document.getElementById("canvas");
+      let captureButton = document.getElementById("capture-btn");
+      let isPhotoCaptured = false;
+
+      navigator.mediaDevices
+        .getUserMedia({ video: true })
+        .then(function (stream) {
+          video.srcObject = stream;
+        })
+        .catch(function (error) {
+          console.log("Error accessing webcam: " + error);
+        });
+
+      function capturePhoto() {
+        if (!isPhotoCaptured) {
+          let context = canvas.getContext("2d");
+          canvas.width = video.offsetWidth;
+          canvas.height = video.offsetHeight;
+          context.drawImage(video, 0, 0, canvas.width, canvas.height);
+
+          let imageData = canvas.toDataURL("image/jpeg");
+          document.getElementById("image-data").value = imageData;
+
+          video.style.display = "none";
+          canvas.style.display = "block";
+
+          captureButton.textContent = "Retake Photo";
+          isPhotoCaptured = true;
+        } else {
+          video.style.display = "block";
+          canvas.style.display = "none";
+
+          captureButton.textContent = "Click Photo";
+          isPhotoCaptured = false;
+        }
+      }
+
+      function dropDown() {
+        let menu = document.getElementById("menu");
+        menu.classList.toggle("show");
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="{{ url_for('static',filename='css/view.css')}}"
+      rel="stylesheet"
+    />
+    <title>History</title>
+  </head>
+  <body>
+    <button class="user-btn" onclick="dropDown()">
+      <img
+        src="{{ url_for('static',filename='images/user.jpg')}}"
+        alt="Error!"
+        class="user"
+      />
+    </button>
+    <div class="drop-wrap" id="menu">
+      <div class="drop">
+        <a href="#"
+          >My Account<span class="material-symbols-outlined"> person </span></a
+        >
+        <a href="#"
+          >Edit Profile<span class="material-symbols-outlined"> edit </span></a
+        >
+        <a href="#"
+          >Settings<span class="material-symbols-outlined icon">
+            settings
+          </span></a
+        >
+        <a href="/logout"
+          >Logout<span class="material-symbols-outlined icon"> logout </span></a
+        >
+      </div>
+    </div>
+    <div class="main">
+      <table>
+        <tr>
+          <th>Section</th>
+          <th>Date</th>
+          <th>View</th>
+        </tr>
+        {% for record in history %}
+        <tr>
+          <td>{{ record['section'] }}</td>
+          <td>{{ record['date'] }}</td>
+          <td>
+            <button
+              class="view-btn"
+              userid="{{record['username']}}"
+              section="{{ record['section'] }}"
+              date="{{ record['date'] }}"
+              onclick="viewAttendance(this)"
+            >
+              View
+            </button>
+          </td>
+        </tr>
+        {% endfor %}
+      </table>
+    </div>
+    <script>
+      let menu = document.getElementById("menu");
+      function dropDown() {
+        menu.classList.toggle("show");
+      }
+
+      function viewAttendance(button) {
+        const userid = button.getAttribute("userid");
+        const section = button.getAttribute("section");
+        const date = button.getAttribute("date");
+
+        const url = `/attendance/${userid}/view_details?section=${section}&date=${date}`;
+        window.location.href = url;
+      }
+    </script>
+  </body>
+</html>

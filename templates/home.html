@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="{{ url_for('static',filename='css/home.css')}}"
+      rel="stylesheet"
+    />
+    <title>Homepage</title>
+  </head>
+  <body>
+    <button class="user-btn" onclick="dropDown()">
+      <img
+        src="{{ url_for('static',filename='images/user.jpg')}}"
+        alt="Error!"
+        class="user"
+      />
+    </button>
+    <div class="drop-wrap" id="menu">
+      <div class="drop">
+        <a href="#"
+          >My Account<span class="material-symbols-outlined"> person </span></a
+        >
+        <a href="#"
+          >Edit Profile<span class="material-symbols-outlined"> edit </span></a
+        >
+        <a href="#"
+          >Settings<span class="material-symbols-outlined icon">
+            settings
+          </span></a
+        >
+        <a href="/logout"
+          >Logout<span class="material-symbols-outlined icon"> logout </span></a
+        >
+      </div>
+    </div>
+    <div class="main">
+      <div class="container">
+        <img
+          src="{{ url_for('static',filename='images/home_image.jpg')}}"
+          alt="Error Loading!"
+        />
+        <form name="section_form" method="get">
+          <div class="choice">
+            <select id="section-select" name="section">
+              <option value="" selected>Select Section</option>
+              {% for section in sections %}
+              <option value="{{section}}">{{section}}</option>
+              {% endfor %}
+            </select>
+          </div>
+          <div class="btn-container">
+            <button type="button" onclick="submitForm('take_attendance')">
+              Take Attendance
+            </button>
+            <button type="button" onclick="submitForm('view_history')">
+              View History
+            </button>
+            <button type="button" onclick="submitForm('edit_attendance')">
+              Edit Attendance
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+    <script>
+      let menu = document.getElementById("menu");
+      function dropDown() {
+        menu.classList.toggle("show");
+      }
+
+      function submitForm(actionType) {
+        let select = document.getElementById("section-select");
+        if (select.value === "") {
+          alert("Please select a valid section!");
+        } else {
+          if (actionType === "take_attendance") {
+            document.section_form.action =
+              "/attendance/{{userid}}/take_attendance";
+          } else if (actionType === "view_history") {
+            document.section_form.action =
+              "/attendance/{{userid}}/view_history";
+          } else if (actionType === "edit_attendance") {
+            document.section_form.action = "/attendance/{{userid}}/edit";
+          }
+          document.section_form.submit();
+        }
+      }
+    </script>
+  </body>
+</html>

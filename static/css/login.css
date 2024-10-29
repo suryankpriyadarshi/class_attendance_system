@@ -1,0 +1,116 @@
+@import url("https://fonts.googleapis.com");
+@import url("https://fonts.gstatic.com");
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+body{
+    background: linear-gradient(to right,#20a6c7,#b3d3cc);
+    height: 100svh;
+    position: relative;
+}
+section{
+    position: absolute;
+    top: 15%;
+    left: 15%;
+    height: 70%;
+    width: 70%;
+    background: white;
+    border-radius: 50px;
+    box-shadow: 0 0 8px rgba(0,0,0,0.6);
+    display: flex;
+    /* justify-content: center; */
+    align-items: center;
+    /* height: inherit; */
+}
+section .login_img{
+    width: 60%;
+    height: 70%;
+    border-right: 1px solid grey;
+    display: flex;
+    justify-content: center;
+}
+section .login_img img{
+    width: 60%;
+    height: 100%;
+    
+}
+
+.form{
+    background: white;
+    width: 30%;
+    margin-left: 2rem;
+}
+.form .form_main{
+    margin-top:1.5rem;
+    margin-left:2rem;
+}
+.form h3{
+    font-family: "Roboto", sans-serif;
+    font-weight: 400;
+    font-size: 2.5rem;
+    position: relative;
+    left: 7%;
+}
+.form .form_content{
+    font-family: "Roboto", sans-serif;
+    font-style: normal;
+    margin-top: 15px;
+    position: relative;
+}
+.form .form_labels{
+    font-family: "Roboto", sans-serif;
+    font-style: normal;
+    font-size: 1.5rem;
+    font-weight: 300;
+}
+.form .form_input{
+    width: 90%;
+    height: 35px;
+    border: 1px solid rgb(192, 192, 192);
+    border-radius: 5px;
+    padding: 5px 10px;
+    font-size: 1.1rem;
+}
+.form .toggel
+{
+    width: 9%;
+    font-size: 1.2rem;
+    background-color: white;
+    color: rgb(0, 0, 0);
+    border: none;
+    position: absolute;
+    aspect-ratio: 1;
+    top: 60%; 
+    right: -2%;
+}
+
+.form .toggel i:hover
+{
+    cursor: pointer;
+}
+.form .btn
+{
+    margin:15px 0;
+    font-size: 1.2rem;
+    background-color: #0d6efd;
+    color: white;
+    width: 40%;
+    height: 40px;
+    border: none;
+    border-radius: 5px;
+    transition: 0.3s;
+}
+.form .btn:hover
+{
+    transform: scale(1.1);
+    background-color: #ffffff;
+    color: rgb(0, 0, 0);
+    border: 1.5px solid black;
+}
+.form p{
+    margin-left: 2rem;
+}
+
